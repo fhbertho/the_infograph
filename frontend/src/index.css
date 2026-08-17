@@ -1,18 +1,23 @@
 @import "@xyflow/react/dist/style.css";
 
 :root {
-  --bg-main: #0b0f19;
-  --bg-card: #151d30;
-  --bg-sidebar: #111827;
-  --border-color: #2a364f;
-  --border-glow: #3b82f6;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent-cyan: #06b6d4;
-  --accent-purple: #8b5cf6;
+  --bg-main: #000000;
+  --bg-card: #0c0c0e;
+  --bg-sidebar: #050505;
+  --bg-header: #070708;
+  --bg-elevated: #111114;
+  --border-color: #1f1f23;
+  --border-subtle: #27272a;
+  --border-glow: #10b981;
+  --text-primary: #f4f4f5;
+  --text-secondary: #71717a;
+  --text-muted: #52525b;
   --accent-green: #10b981;
-  --accent-amber: #f59e0b;
-  --accent-rose: #f43f5e;
+  --accent-green-bright: #22c55e;
+  --accent-green-dark: #059669;
+  --accent-green-subtle: rgba(16, 185, 129, 0.1);
+  --accent-gray: #27272a;
+  --accent-gray-light: #3f3f46;
 }
 
 * {
@@ -30,20 +35,20 @@ body, html, #root {
   color: var(--text-primary);
 }
 
-/* Scrollbars estilizadas */
+/* Scrollbars estilizadas minimalistas */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-main);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 3px;
+  background: var(--border-subtle);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-glow);
+  background: var(--accent-green);
 }
 
 /* ReactFlow dark styling */
@@ -53,59 +58,69 @@ body, html, #root {
 
 .react-flow__controls {
   background: var(--bg-card) !important;
-  border: 1px solid var(--border-color) !important;
+  border: 1px solid var(--border-subtle) !important;
   border-radius: 8px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8) !important;
 }
 
 .react-flow__controls-button {
   background: var(--bg-card) !important;
-  border-bottom: 1px solid var(--border-color) !important;
-  color: var(--text-primary) !important;
-  fill: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+  fill: var(--text-secondary) !important;
+  transition: all 0.2s ease;
 }
 
 .react-flow__controls-button:hover {
-  background: var(--border-color) !important;
+  background: var(--bg-elevated) !important;
+  color: var(--accent-green) !important;
+  fill: var(--accent-green) !important;
 }
 
 .react-flow__minimap {
-  background: var(--bg-card) !important;
+  background: var(--bg-sidebar) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Estilos de Nós Customizados */
+/* Estilos de Nós Customizados Minimalistas */
 .custom-node {
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
   padding: 12px 14px;
   min-width: 220px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
   transition: all 0.2s ease-in-out;
 }
 
 .custom-node:hover {
-  border-color: var(--border-glow);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  border-color: var(--accent-green);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
   transform: translateY(-2px);
 }
 
-.custom-node.database { border-left: 4px solid var(--accent-amber); }
-.custom-node.cache { border-left: 4px solid var(--accent-rose); }
-.custom-node.proxy { border-left: 4px solid var(--accent-cyan); }
-.custom-node.api { border-left: 4px solid var(--accent-purple); }
-.custom-node.frontend { border-left: 4px solid var(--accent-green); }
-.custom-node.monitoring { border-left: 4px solid #ec4899; }
-.custom-node.generic { border-left: 4px solid var(--text-secondary); }
+.custom-node.database { border-left: 3px solid #10b981; }
+.custom-node.cache { border-left: 3px solid #34d399; }
+.custom-node.proxy { border-left: 3px solid #22c55e; }
+.custom-node.api { border-left: 3px solid #059669; }
+.custom-node.frontend { border-left: 3px solid #4ade80; }
+.custom-node.monitoring { border-left: 3px solid #6ee7b7; }
+.custom-node.generic { border-left: 3px solid var(--text-muted); }
 
 .network-node {
-  background: rgba(16, 185, 129, 0.08);
-  border: 2px dashed var(--accent-green);
-  border-radius: 12px;
-  padding: 10px 16px;
+  background: rgba(16, 185, 129, 0.04);
+  border: 1px dashed var(--accent-green-dark);
+  border-radius: 8px;
+  padding: 8px 14px;
   color: var(--accent-green);
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-weight: 500;
+  font-size: 0.82rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.network-node:hover {
+  border-color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.08);
 }

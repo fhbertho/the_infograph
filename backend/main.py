@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 from parsers.docker_parser import parse_docker_compose
 from parsers.k8s_parser import parse_k8s_manifests
+from parsers.tf_parser import parse_terraform
 from services.ai_service import analyze_infrastructure, query_copilot
 
 load_dotenv()
@@ -97,18 +98,19 @@ def get_sample_infra():
 
 @app.post("/api/parse-file")
 async def parse_file(file: UploadFile = File(...)):
-    """Recebe um arquivo YAML e realiza o parsing conforme o tipo (Docker ou Kubernetes)."""
+    """Recebe um arquivo YAML ou Terraform (.tf) e realiza o parsing."""
     filename = file.filename.lower()
     content_bytes = await file.read()
     content_str = content_bytes.decode("utf-8")
 
     try:
-        if "docker" in filename or "compose" in filename or "services:" in content_str:
+        if filename.endswith(".tf") or "resource " in content_str or "provider " in content_str:
+            parsed = parse_terraform(content_str)
+        elif "docker" in filename or "compose" in filename or "services:" in content_str:
             parsed = parse_docker_compose(content_str)
         elif "kind:" in content_str:
             parsed = parse_k8s_manifests(content_str)
         else:
-            # Tenta Docker Compose por padrão
             parsed = parse_docker_compose(content_str)
         
         parsed["raw_yaml"] = content_str

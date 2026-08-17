@@ -74,7 +74,7 @@ def parse_k8s_manifests(content_str: str) -> Dict[str, Any]:
                             "target": target_id,
                             "label": "roteia_para",
                             "animated": True,
-                            "style": {"stroke": "#f59e0b", "strokeWidth": 2}
+                            "style": {"stroke": "#10b981", "strokeWidth": 2}
                         })
 
     return {

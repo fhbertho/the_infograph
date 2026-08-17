@@ -14,8 +14,8 @@ export function Header({ onFileUpload, onLoadSample, summary, toggleCopilot, cop
   return (
     <header style={{
       height: '60px',
-      backgroundColor: '#111827',
-      borderBottom: '1px solid #1f2937',
+      backgroundColor: '#070708',
+      borderBottom: '1px solid #1f1f23',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -25,35 +25,35 @@ export function Header({ onFileUpload, onLoadSample, summary, toggleCopilot, cop
       {/* Brand Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <div style={{
-          width: '36px',
-          height: '36px',
+          width: '34px',
+          height: '34px',
           borderRadius: '8px',
-          background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+          background: 'linear-gradient(135deg, #10b981, #047857)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 0 12px rgba(59, 130, 246, 0.4)'
+          boxShadow: '0 0 14px rgba(16, 185, 129, 0.25)'
         }}>
-          <Network size={20} color="#ffffff" />
+          <Network size={18} color="#000000" strokeWidth={2.5} />
         </div>
         <div>
-          <h1 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '-0.02em' }}>
+          <h1 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#f4f4f5', letterSpacing: '-0.02em' }}>
             InfraGraph
           </h1>
-          <p style={{ fontSize: '0.7rem', color: '#94a3b8' }}>DevOps & Topology Analyzer</p>
+          <p style={{ fontSize: '0.68rem', color: '#71717a' }}>DevOps & Topology Analyzer</p>
         </div>
       </div>
 
       {/* Summary Badges */}
       {summary && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#94a3b8', background: '#1e293b', padding: '4px 10px', borderRadius: '6px' }}>
-            <Server size={14} color="#60a5fa" />
-            <span>Serviços: <strong style={{ color: '#f8fafc' }}>{summary.total_services || summary.total_resources || 0}</strong></span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#a1a1aa', background: '#0e0e11', border: '1px solid #1f1f23', padding: '4px 10px', borderRadius: '6px' }}>
+            <Server size={13} color="#10b981" />
+            <span>Serviços: <strong style={{ color: '#f4f4f5' }}>{summary.total_services || summary.total_resources || 0}</strong></span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#94a3b8', background: '#1e293b', padding: '4px 10px', borderRadius: '6px' }}>
-            <FileText size={14} color="#34d399" />
-            <span>Formato: <strong style={{ color: '#f8fafc' }}>{summary.format || 'Custom'}</strong></span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: '#a1a1aa', background: '#0e0e11', border: '1px solid #1f1f23', padding: '4px 10px', borderRadius: '6px' }}>
+            <FileText size={13} color="#34d399" />
+            <span>Formato: <strong style={{ color: '#f4f4f5' }}>{summary.format || 'Custom'}</strong></span>
           </div>
         </div>
       )}
@@ -64,7 +64,7 @@ export function Header({ onFileUpload, onLoadSample, summary, toggleCopilot, cop
           type="file" 
           ref={fileInputRef} 
           style={{ display: 'none' }} 
-          accept=".yml,.yaml"
+          accept=".yml,.yaml,.tf"
           onChange={handleFileChange}
         />
 
@@ -74,20 +74,26 @@ export function Header({ onFileUpload, onLoadSample, summary, toggleCopilot, cop
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: '#1f2937',
-            color: '#e2e8f0',
-            border: '1px solid #374151',
+            backgroundColor: '#0e0e11',
+            color: '#d4d4d8',
+            border: '1px solid #27272a',
             borderRadius: '6px',
             padding: '7px 12px',
-            fontSize: '0.82rem',
+            fontSize: '0.8rem',
             fontWeight: 500,
             cursor: 'pointer',
             transition: 'all 0.2s'
           }}
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#374151'}
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#1f2937'}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#18181b';
+            e.currentTarget.style.borderColor = '#3f3f46';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = '#0e0e11';
+            e.currentTarget.style.borderColor = '#27272a';
+          }}
         >
-          <Play size={14} color="#34d399" />
+          <Play size={13} color="#10b981" />
           <span>Carregar Exemplo</span>
         </button>
 
@@ -97,19 +103,26 @@ export function Header({ onFileUpload, onLoadSample, summary, toggleCopilot, cop
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: '#2563eb',
-            color: '#ffffff',
-            border: 'none',
+            backgroundColor: '#18181b',
+            color: '#f4f4f5',
+            border: '1px solid #27272a',
             borderRadius: '6px',
             padding: '7px 14px',
-            fontSize: '0.82rem',
+            fontSize: '0.8rem',
             fontWeight: 600,
             cursor: 'pointer',
-            boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)',
             transition: 'all 0.2s'
           }}
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#27272a';
+            e.currentTarget.style.borderColor = '#10b981';
+            e.currentTarget.style.color = '#10b981';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = '#18181b';
+            e.currentTarget.style.borderColor = '#27272a';
+            e.currentTarget.style.color = '#f4f4f5';
+          }}
         >
           <Upload size={14} />
           <span>Upload YAML</span>
@@ -121,19 +134,31 @@ export function Header({ onFileUpload, onLoadSample, summary, toggleCopilot, cop
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: copilotOpen ? '#7c3aed' : '#1f2937',
-            color: '#ffffff',
-            border: copilotOpen ? '1px solid #8b5cf6' : '1px solid #374151',
+            backgroundColor: copilotOpen ? '#10b981' : '#0e0e11',
+            color: copilotOpen ? '#000000' : '#d4d4d8',
+            border: copilotOpen ? '1px solid #10b981' : '1px solid #27272a',
             borderRadius: '6px',
             padding: '7px 14px',
-            fontSize: '0.82rem',
+            fontSize: '0.8rem',
             fontWeight: 600,
             cursor: 'pointer',
-            boxShadow: copilotOpen ? '0 0 12px rgba(124, 58, 237, 0.4)' : 'none',
+            boxShadow: copilotOpen ? '0 0 14px rgba(16, 185, 129, 0.3)' : 'none',
             transition: 'all 0.2s'
           }}
+          onMouseOver={(e) => {
+            if (!copilotOpen) {
+              e.currentTarget.style.borderColor = '#10b981';
+              e.currentTarget.style.color = '#10b981';
+            }
+          }}
+          onMouseOut={(e) => {
+            if (!copilotOpen) {
+              e.currentTarget.style.borderColor = '#27272a';
+              e.currentTarget.style.color = '#d4d4d8';
+            }
+          }}
         >
-          <Sparkles size={14} color="#fbbf24" />
+          <Sparkles size={14} color={copilotOpen ? '#000000' : '#10b981'} />
           <span>Copiloto AI</span>
         </button>
       </div>

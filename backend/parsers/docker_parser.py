@@ -117,7 +117,7 @@ def parse_docker_compose(content_str: str) -> Dict[str, Any]:
                 "target": target_id,
                 "label": "depends_on",
                 "animated": True,
-                "style": {"stroke": "#6366f1", "strokeWidth": 2}
+                "style": {"stroke": "#10b981", "strokeWidth": 2}
             })
 
         # Conexão com Redes
@@ -130,7 +130,7 @@ def parse_docker_compose(content_str: str) -> Dict[str, Any]:
                     "source": node_id,
                     "target": net_id,
                     "label": "conectado",
-                    "style": {"stroke": "#10b981", "strokeDasharray": "5,5"}
+                    "style": {"stroke": "#059669", "strokeDasharray": "4,4"}
                 })
         elif isinstance(srv_networks, dict):
             for net in srv_networks.keys():
@@ -140,7 +140,7 @@ def parse_docker_compose(content_str: str) -> Dict[str, Any]:
                     "source": node_id,
                     "target": net_id,
                     "label": "conectado",
-                    "style": {"stroke": "#10b981", "strokeDasharray": "5,5"}
+                    "style": {"stroke": "#059669", "strokeDasharray": "4,4"}
                 })
 
     return {

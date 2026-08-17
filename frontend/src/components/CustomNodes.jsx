@@ -5,19 +5,19 @@ import { Database, Zap, Globe, Server, Cpu, Shield, Activity, Network } from 'lu
 const getNodeIcon = (nodeType) => {
   switch (nodeType) {
     case 'database':
-      return <Database className="w-4 h-4 text-amber-400" />;
+      return <Database size={15} color="#10b981" />;
     case 'cache':
-      return <Zap className="w-4 h-4 text-rose-400" />;
+      return <Zap size={15} color="#34d399" />;
     case 'proxy':
-      return <Globe className="w-4 h-4 text-cyan-400" />;
+      return <Globe size={15} color="#22c55e" />;
     case 'api':
-      return <Server className="w-4 h-4 text-purple-400" />;
+      return <Server size={15} color="#10b981" />;
     case 'frontend':
-      return <Cpu className="w-4 h-4 text-emerald-400" />;
+      return <Cpu size={15} color="#4ade80" />;
     case 'monitoring':
-      return <Activity className="w-4 h-4 text-pink-400" />;
+      return <Activity size={15} color="#6ee7b7" />;
     default:
-      return <Shield className="w-4 h-4 text-slate-400" />;
+      return <Shield size={15} color="#71717a" />;
   }
 };
 
@@ -26,35 +26,35 @@ export const CustomNode = memo(({ data }) => {
 
   return (
     <div className={`custom-node ${nodeType || 'generic'}`}>
-      <Handle type="target" position={Position.Top} style={{ background: '#3b82f6', width: 8, height: 8 }} />
+      <Handle type="target" position={Position.Top} style={{ background: '#10b981', width: 7, height: 7, border: '1px solid #000' }} />
       
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
         {getNodeIcon(nodeType)}
-        <strong style={{ fontSize: '0.95rem', color: '#f8fafc', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '160px' }}>
+        <strong style={{ fontSize: '0.9rem', color: '#f4f4f5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '160px', fontWeight: 600 }}>
           {label}
         </strong>
       </div>
 
       {image && (
-        <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginBottom: '6px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <div style={{ fontSize: '0.72rem', color: '#71717a', marginBottom: '6px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           <code>{image}</code>
         </div>
       )}
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '6px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginTop: '6px' }}>
         {ports && ports.length > 0 && (
-          <span style={{ fontSize: '0.7rem', background: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '4px', padding: '1px 6px' }}>
+          <span style={{ fontSize: '0.68rem', background: '#18181b', color: '#a1a1aa', border: '1px solid #27272a', borderRadius: '4px', padding: '1px 6px' }}>
             Porta: {ports.join(', ')}
           </span>
         )}
         {envCount > 0 && (
-          <span style={{ fontSize: '0.7rem', background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '4px', padding: '1px 6px' }}>
+          <span style={{ fontSize: '0.68rem', background: 'rgba(16, 185, 129, 0.08)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.25)', borderRadius: '4px', padding: '1px 6px' }}>
             {envCount} Envs
           </span>
         )}
       </div>
 
-      <Handle type="source" position={Position.Bottom} style={{ background: '#3b82f6', width: 8, height: 8 }} />
+      <Handle type="source" position={Position.Bottom} style={{ background: '#10b981', width: 7, height: 7, border: '1px solid #000' }} />
     </div>
   );
 });
@@ -63,7 +63,7 @@ export const NetworkNode = memo(({ data }) => {
   return (
     <div className="network-node" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
       <Handle type="target" position={Position.Top} style={{ opacity: 0 }} />
-      <Network className="w-4 h-4 text-emerald-400" />
+      <Network size={15} color="#10b981" />
       <span>{data.label}</span>
       <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} />
     </div>

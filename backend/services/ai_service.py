@@ -25,7 +25,7 @@ def analyze_infrastructure(infra_data: Dict[str, Any]) -> Dict[str, Any]:
     edges = infra_data.get("edges", [])
 
     prompt = f"""
-Você é um Arquiteto de Infraestrutura e especialista SRE / DevOps Sênior.
+Você é um Arquiteto de Infraestrutura e especialista SRE / DevOps Sênior.   
 Analise a seguinte topologia de infraestrutura extraída de um arquivo de configuração:
 
 Resumo: {summary}
